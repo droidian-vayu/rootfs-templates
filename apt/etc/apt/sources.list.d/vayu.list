@@ -1,0 +1,1 @@
+deb [arch=all signed-by=/var/lib/extrepo/keys/vayu.asc] https://vacuumbeef.github.io/vayu-repo bookworm main

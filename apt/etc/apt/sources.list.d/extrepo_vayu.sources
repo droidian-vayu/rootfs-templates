@@ -1,6 +1,0 @@
-Architectures: all
-Components: main
-Suites: bookworm
-Uris: https://vacuumbeef.github.io/vayu-repo bookworm main
-Types: deb
-Signed-By: /var/lib/extrepo/keys/vayu.asc
