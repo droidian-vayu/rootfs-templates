@@ -1,5 +1,6 @@
 {{- $architecture := or .architecture "arm64" -}}
 {{- $suite := "bookworm" -}}
+{{- $use_internal_repository := or .use_internal_repository "no" -}}
 
 architecture: {{ $architecture }}
 actions:
@@ -8,7 +9,7 @@ actions:
     suite: {{ $suite }}
     components:
       - main
-    mirror: https://deb.debian.org/debian
+    mirror: http://deb.debian.org/debian
     variant: minbase
 
   - action: overlay
@@ -16,15 +17,12 @@ actions:
     description: Adding apt overlay
     destination: /
 
-  - action: run
-    chroot: true
-    description: update apt
-    command: apt update
-
   - action: apt
     chroot: true
     description: install apt config
+    update: true
     packages:
+      - ca-certificates
       - droidian-apt-config
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
@@ -33,3 +31,21 @@ actions:
     description: Clean repositories
     chroot: true
     script: ../scripts/clean-bootstrap-repositories.sh
+
+{{ if eq $use_internal_repository "yes" }}
+  - action: overlay
+    source: ../../apt
+    description: Add internal repository
+    destination: /var/lib/droidian-internal-repository
+{{end}}
+
+  - action: run
+    description: Build configuration
+    chroot: true
+    script: ../scripts/build-configuration.sh configure
+
+  - action: apt
+    chroot: true
+    description: install droidian-base metapackage
+    packages:
+      - droidian-base

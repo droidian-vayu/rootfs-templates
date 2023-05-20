@@ -1,0 +1,66 @@
+{{- $architecture := or .architecture "arm64" -}}
+{{- $apilevel := or .apilevel "28" -}}
+{{- $suite := "bookworm" -}}
+{{- $use_internal_repository := or .use_internal_repository "no" -}}
+
+{{- $username := or .username "droidian" -}}
+{{- $password := or .password "1234" -}}
+{{- $hostname := or .hostname "droidian" -}}
+
+architecture: {{ $architecture }}
+actions:
+
+  - action: recipe
+    description: Generate base rootfs
+    recipe: recipes/droidian_base.yaml
+    variables:
+      architecture: {{ $architecture }}
+      suite: {{ $suite }}
+      use_internal_repository: {{ $use_internal_repository }}
+
+  - action: apt
+    chroot: true
+    description: install packages
+    packages:
+      - adaptation-hybris-api{{ $apilevel }}
+
+  - action: run
+    description: Set up android base
+    chroot: true
+    script: scripts/setup-gsi.sh
+
+  - action: run
+    description: Set up default user
+    chroot: true
+    script: scripts/setup-user.sh {{ $username }} {{ $password }}
+
+  - action: run
+    description: Set up system
+    chroot: true
+    script: scripts/setup-system.sh {{ $hostname }}
+
+{{ if eq $architecture "armhf" }}
+  - action: run
+    chroot: true
+    description: add arm64 arch
+    command: dpkg --add-architecture arm64
+
+  - action: run
+    chroot: true
+    description: update repositories
+    command: apt update
+{{end}}
+
+{{ if ne $architecture "amd64" }}
+  - action: apt
+    chroot: true
+    description: install android GSI
+    packages:
+      - android-system-gsi-{{ $apilevel }}:arm64
+{{end}}
+
+  - action: apt
+    chroot: true
+    description: install package sideload-tools
+    packages:
+      - package-sideload-tools
