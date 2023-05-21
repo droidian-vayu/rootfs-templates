@@ -146,7 +146,7 @@ cp ./vendor.img ${WORK_DIR}/target/data/vendor.img
 #[ -e "${dtbo}" ] && cp "${dtbo}" ${WORK_DIR}/target/data/dtbo.img
 #[ -e "${vbmeta}" ] && cp "${vbmeta}" ${WORK_DIR}/target/data/vbmeta.img
 
-kernel_version=$(basename ${bootimage})
+#kernel_version=$(basename ${bootimage})
 kernel_version=${kernel_version/boot.img-//}
 
 cat \
