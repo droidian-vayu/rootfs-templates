@@ -99,7 +99,7 @@ echo "Preparing zipfile"
 if [ ! -d "android-image-flashing-template" ]; then
     apt update
     apt install git -y
-    git clone https://github.com/vacuumbeef/android-image-flashing-template
+    git clone https://github.com/droidian-vayu/android-image-flashing-template
 fi
 
 mkdir -p ${WORK_DIR}/target/data
@@ -109,10 +109,10 @@ mv ${WORK_DIR}/userdata.img ${WORK_DIR}/target/data/userdata.img
 
 apt update
 apt install wget -y
-wget https://github.com/vacuumbeef/adaptation-droidian-vayu/releases/download/adaptation/boot.img
-wget https://github.com/vacuumbeef/adaptation-droidian-vayu/releases/download/adaptation/dtbo.img
-wget https://github.com/vacuumbeef/adaptation-droidian-vayu/releases/download/adaptation/vbmeta.img
-wget https://github.com/vacuumbeef/adaptation-droidian-vayu/releases/download/adaptation/vendor.img
+wget https://github.com/droidian-vayu/adaptation-droidian-vayu/releases/download/adaptation/boot.img
+wget https://github.com/droidian-vayu/adaptation-droidian-vayu/releases/download/adaptation/dtbo.img
+wget https://github.com/droidian-vayu/adaptation-droidian-vayu/releases/download/adaptation/vbmeta.img
+wget https://github.com/droidian-vayu/adaptation-droidian-vayu/releases/download/adaptation/vendor.img
 cp ./boot.img ${WORK_DIR}/target/data/boot.img
 cp ./dtbo.img ${WORK_DIR}/target/data/dtbo.img
 cp ./vbmeta.img ${WORK_DIR}/target/data/vbmeta.img
