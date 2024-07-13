@@ -1,5 +1,5 @@
 {{- $architecture := or .architecture "arm64" -}}
-{{- $apilevel := or .apilevel "28" -}}
+{{- $apilevel := or .apilevel "30" -}}
 {{- $suite := "trixie" -}}
 {{- $version := or .version "nightly" -}}
 {{- $variant := or .variant "phone" -}}

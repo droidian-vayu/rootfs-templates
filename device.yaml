@@ -1,8 +1,8 @@
 {{- $architecture := or .architecture "arm64" -}}
 {{- $suffix := or .suffix "testbuild" -}}
-{{- $image := or .image (printf "droidian-rootfs-api29gsi-%s%s.zip" $architecture $suffix) -}}
+{{- $image := or .image (printf "droidian-rootfs-api30gsi-%s%s.zip" $architecture $suffix) -}}
 {{- $output_type :=  or .output_type "rootfs" -}}
-{{- $apilevel := or .apilevel 28 -}}
+{{- $apilevel := or .apilevel 30 -}}
 {{- $version := or .version "nightly" -}}
 {{- $edition := or .edition "phosh" -}}
 {{- $variant := or .variant "phone" -}}
