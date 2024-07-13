@@ -9,7 +9,7 @@ IMG_MOUNTPOINT=".image"
 # create root img
 echo "Creating an empty root image"
 dd if=/dev/zero of=rootfs.img bs=1M count=${IMG_SIZE}
-mkfs.ext4 -O ^metadata_csum -O ^64bit -F rootfs.img
+mkfs.ext4 -O ^metadata_csum -O ^64bit -O ^orphan_file -F rootfs.img
 
 # mount the image
 echo "Mounting root image"
