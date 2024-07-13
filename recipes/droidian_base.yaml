@@ -1,15 +1,16 @@
 {{- $architecture := or .architecture "arm64" -}}
-{{- $suite := "bookworm" -}}
+{{- $suite := "trixie" -}}
 {{- $use_internal_repository := or .use_internal_repository "no" -}}
 
 architecture: {{ $architecture }}
 actions:
 
   - action: debootstrap
-    suite: {{ $suite }}
+    suite: rolling
     components:
       - main
-    mirror: http://deb.debian.org/debian
+    keyring-file: ../apt/etc/apt/trusted.gpg.d/droidian-bootstrap.gpg
+    mirror: http://releases.droidian.org/snapshots/current
     variant: minbase
 
   - action: overlay
