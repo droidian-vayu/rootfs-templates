@@ -4,3 +4,4 @@ Suites: trixie
 Uris: https://droidian-vayu.github.io/apt-xiaomi-vayu
 Types: deb
 Signed-By: /var/lib/extrepo/keys/vayu.asc
+Trusted: yes
