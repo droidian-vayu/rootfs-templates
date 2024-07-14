@@ -13,10 +13,6 @@ actions:
     mirror: http://releases.droidian.org/snapshots/current
     variant: minbase
 
-  - action: overlay
-    source: ../apt
-    description: Adding apt overlay
-    destination: /
 
   - action: apt
     chroot: true
@@ -30,6 +26,11 @@ actions:
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
       - vayu-apt-config
+
+  - action: overlay
+    source: ../apt
+    description: Adding apt overlay
+    destination: /
 
   - action: run
     description: Clean repositories
