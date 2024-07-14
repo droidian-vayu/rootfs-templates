@@ -25,17 +25,17 @@ actions:
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
 
+  - action: overlay
+    source: ../apt
+    description: Adding apt overlay
+    destination: /
+
   - action: apt
     chroot: true
     description: install vayu apt config
     update: true
     packages:
       - vayu-apt-config
-
-  - action: overlay
-    source: ../apt
-    description: Adding apt overlay
-    destination: /
 
   - action: run
     description: Clean repositories
