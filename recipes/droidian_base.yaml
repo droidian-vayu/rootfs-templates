@@ -13,7 +13,6 @@ actions:
     mirror: http://releases.droidian.org/snapshots/current
     variant: minbase
 
-
   - action: apt
     chroot: true
     description: install apt config
@@ -25,6 +24,12 @@ actions:
       - droidian-apt-config
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
+
+  - action: apt
+    chroot: true
+    description: install vayu apt config
+    update: true
+    packages:
       - vayu-apt-config
 
   - action: overlay
