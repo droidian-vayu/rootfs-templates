@@ -27,7 +27,7 @@ actions:
       - droidian-apt-config
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
-        # TODO: - xiaomi-vayu-apt-config
+      - vayu-apt-config
 
   - action: run
     description: Clean repositories
