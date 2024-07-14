@@ -24,6 +24,8 @@ actions:
     update: true
     packages:
       - ca-certificates
+      - apt-transport-https
+      - gnupg
       - droidian-apt-config
       - droidian-archive-keyring
       - mobian-droidian-archive-keyring
