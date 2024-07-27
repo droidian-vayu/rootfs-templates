@@ -110,6 +110,12 @@ cp "${bootimage}" ${WORK_DIR}/target/data/boot.img
 [ -e "${dtbo}" ] && cp "${dtbo}" ${WORK_DIR}/target/data/dtbo.img
 [ -e "${vbmeta}" ] && cp "${vbmeta}" ${WORK_DIR}/target/data/vbmeta.img
 
+# Download and copy vendor.img like in old days for now
+apt update
+apt install wget -y
+wget https://github.com/droidian-vayu/adaptation-droidian-vayu/releases/download/adaptation/vendor.img
+cp ./vendor.img ${WORK_DIR}/target/data/vendor.img
+
 kernel_version=$(basename ${bootimage})
 kernel_version=${kernel_version/boot.img-//}
 
