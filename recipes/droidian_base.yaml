@@ -32,10 +32,11 @@ actions:
 
   - action: apt
     chroot: true
-    description: install vayu apt config
+    description: install vayu apt config trixie pool
     update: true
     packages:
-      - vayu-apt-config
+      - vayu-apt-config-trixie
+      - vayu-apt-keyrings
 
   - action: run
     description: Clean repositories
